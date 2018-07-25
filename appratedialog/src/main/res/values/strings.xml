@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AppRateDialog</string>
+    
+    <string name="appratedialog_title">Rate</string>
+    <string name="appratedialog_message">Enjoying? Rate this app. Thanks for your support!</string>
+    <string name="appratedialog_rate">Rate</string>
+    <string name="appratedialog_never">No</string>
+    <string name="appratedialog_remind">Not Now!</string>
 </resources>

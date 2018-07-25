@@ -12,11 +12,14 @@ public class MainActivity extends AppCompatActivity {
 
         AppRateDialog.with(MainActivity.this)
                 .setTitle("Rate")
-                .setMessage("rate this app")
+                .setMessage("Enjoying? Rate this app. Thanks for your support!")
                 .setRateButtonString("Rate")
-                .setRemindButtonString("Remind")
+                .setRemindButtonString("Not Now!")
                 .setNeverButtonString("Never")
+                .setNoOfUseInterval(5)
+                .setUsageDaysInterval(4)
                 //.isDebug(true)
+                .isCancellable(false)
                 .isToFinishActivity(true)
                 .monitor();
     }

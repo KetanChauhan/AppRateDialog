@@ -15,16 +15,16 @@ public class Options {
     //title and message
     private String titleString = null;
     private String messageString = null;
-    private int titleStringId;
-    private int messageStringId;
+    private int titleStringId = R.string.appratedialog_title;
+    private int messageStringId = R.string.appratedialog_message;
 
     //buttons
     private String rateButtonString = null;
     private String remindButtonString = null;
     private String neverButtonString = null;
-    private int rateButtonStringId;
-    private int remindButtonStringId;
-    private int neverButtonStringId;
+    private int rateButtonStringId = R.string.appratedialog_rate;
+    private int remindButtonStringId = R.string.appratedialog_remind;
+    private int neverButtonStringId = R.string.appratedialog_never;
 
     private boolean isShowRemindButton = true;
     private boolean isShowNeverButton = true;

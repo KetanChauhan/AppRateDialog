@@ -27,20 +27,16 @@ public class AppRateDialog {
 
     public static void showDialogIfTimeToShowDialog(Activity activity){
         if(!activity.isFinishing()){
-            Log.d("DDDDDDDDD","show ");
+            Log.d("AppRateDialog","Check if to show dialog.");
             rateDialogInstance.showDialog(activity);
         }else {
-            Log.d("DDDDDDDDD","finished ");
+            Log.d("AppRateDialog","Cannot show AppRateDialog, because acivity has finished.");
         }
     }
 
     private void showDialog(Activity activity){
-        boolean b1 = rateManager.isTimeToShowRateDialog();
-        boolean b2 = options.isDebug();
-        Log.d("DDDDDDDDD","istime "+String.valueOf(b1));
-        Log.d("DDDDDDDDD","debug "+String.valueOf(b2));
-        if(b1 || b2){
-            Log.d("DDDDDDDDD","show final");
+        if(rateManager.isTimeToShowRateDialog() || options.isDebug()){
+            Log.d("AppRateDialog","Show dialog.");
             Dialog dialog = DialogManager.createDialog(activity,options,rateManager);
             dialog.show();
         }else if(options.isToFinishActivity()){
@@ -103,18 +99,24 @@ public class AppRateDialog {
         return rateDialogInstance;
     }
 
-    public AppRateDialog setUsedCountThreshold(int count){
+    public AppRateDialog setNoOfUseInterval(int count){
         options.setUsedCountThreshold(count);
+        rateManager.setUsedCountThreshold(count);
         return rateDialogInstance;
     }
 
-    public AppRateDialog setUsedDaysInterval(int interval){
+    public AppRateDialog setUsageDaysInterval(int interval){
         options.setUsedDaysInterval(interval);
+        rateManager.setUsedDaysInterval(interval);
+        return rateDialogInstance;
+    }
+
+    public AppRateDialog isCancellable(boolean isCancellable){
+        options.setCancellable(isCancellable);
         return rateDialogInstance;
     }
 
     public AppRateDialog isDebug(boolean isDebug){
-        Log.d("DDDDDDDDD","debug "+String.valueOf(isDebug));
         options.setDebug(isDebug);
         return rateDialogInstance;
     }
