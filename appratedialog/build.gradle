@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 
-version = '1.0.0'
-
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'appratedialog'
@@ -15,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/KetanChauhan/AppRateDialog'
     gitUrl = 'https://github.com/KetanChauhan/AppRateDialog.git'
 
-    //libraryVersion = '1.0.0'
+    libraryVersion = '1.1.1'
 
     developerId = 'ketanchauhan'
     developerName = 'Ketan Chauhan'
@@ -28,17 +26,11 @@ ext {
 
 android {
     compileSdkVersion 27
-
-
-
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        versionCode 3
+        versionName "1.1.1"
     }
 
     buildTypes {
@@ -47,16 +39,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 //apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
@@ -97,7 +83,6 @@ install {
                     connection gitUrl
                     developerConnection gitUrl
                     url siteUrl
-
                 }
             }
         }
@@ -106,7 +91,7 @@ install {
 
 apply plugin: 'com.jfrog.bintray'
 
-
+version = libraryVersion
 
 if (project.hasProperty("android")) { // Android libraries
     task sourcesJar(type: Jar) {
