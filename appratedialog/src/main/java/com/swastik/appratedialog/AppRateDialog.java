@@ -25,23 +25,46 @@ public class AppRateDialog {
         return rateDialogInstance;
     }
 
-    public static void showDialogIfTimeToShowDialog(Activity activity){
+    public static boolean showDialogIfTimeToShowDialog(Activity activity){
         if(!activity.isFinishing()){
             Log.d("AppRateDialog","Check if to show dialog.");
-            rateDialogInstance.showDialog(activity);
+            return rateDialogInstance.showDialogIfRequired(activity);
         }else {
             Log.d("AppRateDialog","Cannot show AppRateDialog, because acivity has finished.");
+            return false;
+        }
+    }
+
+    private boolean showDialogIfRequired(Activity activity){
+        if(rateManager.isTimeToShowRateDialog() || options.isDebug()){
+            Log.d("AppRateDialog","show");
+            rateDialogInstance.showDialog(activity);
+            return true;
+        }else {
+            Log.d("AppRateDialog","not to show dialog");
+            OnDialogShouldNotShowListener dialogShouldNotShowListener = options.getDialogShouldNotShowListener();
+            if(dialogShouldNotShowListener!=null){
+                dialogShouldNotShowListener.onDialogShouldNotShow();
+            }
+            return false;
+        }
+    }
+
+    public static boolean showDialogDefinitely(Activity activity){
+        if(!activity.isFinishing()){
+            Log.d("AppRateDialog","Check if to show dialog.");
+            Log.d("AppRateDialog","Show dialog definitely.");
+            rateDialogInstance.showDialog(activity);
+            return true;
+        }else {
+            Log.d("AppRateDialog","Cannot show AppRateDialog, because acivity has finished.");
+            return false;
         }
     }
 
     private void showDialog(Activity activity){
-        if(rateManager.isTimeToShowRateDialog() || options.isDebug()){
-            Log.d("AppRateDialog","Show dialog.");
-            Dialog dialog = DialogManager.createDialog(activity,options,rateManager);
-            dialog.show();
-        }else if(options.isToFinishActivity()){
-            activity.finish();
-        }
+        Dialog dialog = DialogManager.createDialog(activity,options,rateManager);
+        dialog.show();
     }
 
     public AppRateDialog setTitle(String title){
@@ -121,8 +144,18 @@ public class AppRateDialog {
         return rateDialogInstance;
     }
 
-    public AppRateDialog isToFinishActivity(boolean isToFinishActivity){
+    /*public AppRateDialog isToFinishActivity(boolean isToFinishActivity){
         options.setToFinishActivity(isToFinishActivity);
+        return rateDialogInstance;
+    }*/
+
+    public AppRateDialog setOnRateDialogClosedListener(OnRateDialogClosedListener rateDialogClosedListener){
+        options.setRateDialogClosedListener(rateDialogClosedListener);
+        return rateDialogInstance;
+    }
+
+    public AppRateDialog setOnDialogShouldNotShowListener(OnDialogShouldNotShowListener dialogShouldNotShowListener){
+        options.setDialogShouldNotShowListener(dialogShouldNotShowListener);
         return rateDialogInstance;
     }
 

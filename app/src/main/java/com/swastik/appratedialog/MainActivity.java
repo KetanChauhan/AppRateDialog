@@ -2,6 +2,7 @@ package com.swastik.appratedialog;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +21,20 @@ public class MainActivity extends AppCompatActivity {
                 .setUsageDaysInterval(4)
                 //.isDebug(true)
                 .isCancellable(false)
-                .isToFinishActivity(true)
+                .setOnRateDialogClosedListener(new OnRateDialogClosedListener() {
+                    @Override
+                    public void onRateDialogClosed() {
+                        Toast.makeText(MainActivity.this,"Rate dialog closed",Toast.LENGTH_SHORT).show();
+                        MainActivity.this.finish();
+                    }
+                })
+                .setOnDialogShouldNotShowListener(new OnDialogShouldNotShowListener() {
+                    @Override
+                    public void onDialogShouldNotShow() {
+                        Toast.makeText(MainActivity.this,"Not to show dialog",Toast.LENGTH_SHORT).show();
+                        MainActivity.this.finish();
+                    }
+                })
                 .monitor();
     }
 
