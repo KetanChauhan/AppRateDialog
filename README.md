@@ -119,7 +119,7 @@ Find my android apps on [PlayStore](https://play.google.com/store/apps/dev?id=52
 
 ## Lisence
 ```
-Copyright 2018-2021 Ketan Chauhan
+Copyright 2018 Ketan Chauhan
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
