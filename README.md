@@ -90,7 +90,23 @@ AppRateDialog.showDialogIfTimeToShowDialog(MainActivity.this);
 2. Always show dialog when called.(Ex. always show dialog when button clicked)
 Show dialog using this statement
 ```
-AppRateDialog.showDialog(MainActivity.this);
+AppRateDialog.showDialogDefinitely(MainActivity.this);
 ```
+
+### Methods and Parameters
+Method | Parameter | Use | Type | Default Value
+-------|-----------|-----|-----|----
+`setTitle()` | `String title` or `int titleStringId`(Ex. R.string.rate_title) | Specifies Title of Rate dialog | optional(Uses default title if not specified) | 
+`setMessage()` | `String message` or `int messageStringId` | Specifies Message of Rate dialog | optional
+`setRateButtonString()` | `String str` or `int strStringId` | Specifies Rate button(Positive button) string | optional
+`setRemindButtonString()` | `String str` or `int strStringId` | Specifies Remind button(Neutral button) string | optional
+`setNeverButtonString()` | `String str` or `int strStringId` | Specifies Never button(Negative button) string | optional
+`isShowRemindButton()` | `boolean isShow` | Specifies if Remind button should show or not| optional(Default value is `true`)
+`isShowNeverButton()` | `boolean isShow` | Specifies if Never button should show or not| optional(Default value is `true`)
+
+`setNoOfUseInterval()` | `int count` | Specifies number of app usage interval when dialog should show | optional(Default value is `3`)
+`setUsageDaysInterval()` | `int interval` | Specifies number of days interval when dialog should show | optional(Default value is `3`)
+`isCancellable()` | `boolean isCancellable` | Specifies is dialog cancellable or not | optional(Default value is `false`)
+`isDebug()` | `boolean isDebug` | This method is useful while development. If `isDebug` is `true`, Rate dialog will be shown every time. In production release, it should be false. | optional(Default value is `false`)
 
 
