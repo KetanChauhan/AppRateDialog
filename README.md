@@ -3,6 +3,7 @@ AppRateDialog
 AppRateDialog is an android library to show Rate this app dialog in android app.  
 
 #### Screenshot
+![Screen shot]()
 
 #### Features
 - Material design dialog.
@@ -64,12 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .monitor();
     }
-
-    @Override
-    public void onBackPressed() {
-        
-        //super.onBackPressed();
-    }
 }
 ```
 
@@ -109,8 +104,32 @@ Method | Use | Type | Default Value
 `isDebug(boolean isDebug)` | This method is useful while development. If `isDebug` is `true`, Rate dialog will be shown every time. In production release, it should be false. | optional | `false`
 `setOnRateDialogClosedListener(OnRateDialogClosedListener rateDialogClosedListener)` | Specifies listener which should be called when Rate dialod is closed.(Dialog will be considered closed when Rate, Never or Remind button is pressed or dialog is cancelled) | optional | `null`
 `setOnDialogShouldNotShowListener(OnDialogShouldNotShowListener dialogShouldNotShowListener)` | Specifies listener which should be called when Rate dialod is not shown. (This listener will be called only if Rate dialog is not shown.) | optional | `null`
-`monitor()` | - | Monitors app uasge count | required | -
+`monitor()` | Monitors app uasge count | required | -
 
+### Sample
+Refer a sample app [here](https://github.com/KetanChauhan/AppRateDialog/tree/master/app)
 
+### Contribute
+Contribute to make this library better. Issues and Pull requests are welcomed.
 
+## Author
+Ketan Chauhan  
+Email: chauhanketan73@gmail.com  
+Find my android apps on [PlayStore](https://play.google.com/store/apps/dev?id=5259598937394408605) or on [swastikapps.rf.gd](http://www.swastikapps.rf.gd/)
 
+## Lisence
+```
+Copyright 2018-2021 Ketan Chauhan
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
