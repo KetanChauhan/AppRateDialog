@@ -3,7 +3,7 @@ AppRateDialog
 AppRateDialog is an android library to show Rate this app dialog in android app.  
 
 #### Screenshot
-![Screen shot]()
+![Screen shot](https://github.com/KetanChauhan/AppRateDialog/blob/master/screenshots/screenshot1.jpg)
 
 #### Features
 - Material design dialog.
