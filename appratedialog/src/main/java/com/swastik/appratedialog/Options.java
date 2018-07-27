@@ -2,6 +2,9 @@ package com.swastik.appratedialog;
 
 import android.content.Context;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+
 public class Options {
     private Context context;
 
@@ -10,7 +13,7 @@ public class Options {
     private int usedDaysInterval = 3;
     private boolean isCancellable = false;
     private boolean isDebug = false;
-    private boolean isToFinishActivity = false;
+//    private boolean isToFinishActivity = false;
 
     //title and message
     private String titleString = null;
@@ -28,6 +31,10 @@ public class Options {
 
     private boolean isShowRemindButton = true;
     private boolean isShowNeverButton = true;
+
+    //listener
+    private OnRateDialogClosedListener rateDialogClosedListener=null;
+    private OnDialogShouldNotShowListener dialogShouldNotShowListener=null;
 
     public Options(Context context) {
         this.context = context;
@@ -161,11 +168,27 @@ public class Options {
         isDebug = debug;
     }
 
-    public boolean isToFinishActivity() {
+    /*public boolean isToFinishActivity() {
         return isToFinishActivity;
     }
 
     public void setToFinishActivity(boolean toFinishActivity) {
         isToFinishActivity = toFinishActivity;
+    }*/
+
+    public OnRateDialogClosedListener getRateDialogClosedListener() {
+        return rateDialogClosedListener;
+    }
+
+    public void setRateDialogClosedListener(OnRateDialogClosedListener rateDialogClosedListener) {
+        this.rateDialogClosedListener = rateDialogClosedListener;
+    }
+
+    public OnDialogShouldNotShowListener getDialogShouldNotShowListener() {
+        return dialogShouldNotShowListener;
+    }
+
+    public void setDialogShouldNotShowListener(OnDialogShouldNotShowListener dialogShouldNotShowListener) {
+        this.dialogShouldNotShowListener = dialogShouldNotShowListener;
     }
 }

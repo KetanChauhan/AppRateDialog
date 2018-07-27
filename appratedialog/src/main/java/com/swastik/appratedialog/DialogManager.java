@@ -17,28 +17,28 @@ public class DialogManager {
         builder.setMessage(options.getMessage());
         builder.setCancelable(options.isCancellable());
 
+        final OnRateDialogClosedListener rateDialogClosedListener = options.getRateDialogClosedListener();
+
         builder.setPositiveButton(options.getRateButtonString(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int whichButton) {
-                Log.d("AppRateDialog","Rate button clicked.");
-                rateManager.rateOnStore(activity);
-                rateManager.setRated();
-                if(options.isToFinishActivity()){
-                    Log.d("AppRateDialog","Finishing activity...");
-                    activity.finish();
-                }
+            Log.d("AppRateDialog","Rate button clicked.");
+            rateManager.rateOnStore(activity);
+            rateManager.setRated();
+            if(rateDialogClosedListener!=null){
+                rateDialogClosedListener.onRateDialogClosed();
+            }
             }
         });
         if(options.isShowNeverButton()){
             builder.setNegativeButton(options.getNeverButtonString(), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Log.d("AppRateDialog","Never button clicked.");
-                    rateManager.setNeverShow();
-                    if(options.isToFinishActivity()){
-                        Log.d("AppRateDialog","Finishing activity...");
-                        activity.finish();
-                    }
+                Log.d("AppRateDialog","Never button clicked.");
+                rateManager.setNeverShow();
+                if(rateDialogClosedListener!=null){
+                    rateDialogClosedListener.onRateDialogClosed();
+                }
                 }
             });
         }
@@ -46,23 +46,21 @@ public class DialogManager {
             builder.setNeutralButton(options.getRemindButtonString(), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Log.d("AppRateDialog","Remind button clicked.");
-                    rateManager.resetUsedTimesCounter();
-                    if(options.isToFinishActivity()){
-                        Log.d("AppRateDialog","Finishing activity...");
-                        activity.finish();
-                    }
+                Log.d("AppRateDialog","Remind button clicked.");
+                rateManager.resetUsedTimesCounter();
+                if(rateDialogClosedListener!=null){
+                    rateDialogClosedListener.onRateDialogClosed();
+                }
                 }
             });
         }
         builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
-                Log.d("AppRateDialog","Dialog dismissed.");
-                if(options.isToFinishActivity()){
-                    Log.d("AppRateDialog","Finishing activity...");
-                    activity.finish();
-                }
+            Log.d("AppRateDialog","Dialog dismissed.");
+            if(rateDialogClosedListener!=null){
+                rateDialogClosedListener.onRateDialogClosed();
+            }
             }
         });
 
