@@ -15,7 +15,7 @@ AppRateDialog is an android library to show Rate this app dialog in android app.
 
 ## Install
 You can include this library in your project using dependency
-```
+```gradle
 dependencies {
     implementation 'com.swastik.appratedialog:appratedialog:1.1.1'
 }
@@ -24,14 +24,14 @@ dependencies {
 ## Usage
 ### Configuration
 Add following import statements
-```
+```java
 import com.swastik.appratedialog.AppRateDialog;
 import com.swastik.appratedialog.OnDialogShouldNotShowListener;
 import com.swastik.appratedialog.OnRateDialogClosedListener;
 ```
 
 Initialize AppRateDialog in onCreate method of your activity  
-```
+```java
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 Show dialog by using following statement:
-```
+```java
 AppRateDialog.showDialogIfTimeToShowDialog(MainActivity.this);
 ```
 This will show dialog if necessary.
@@ -78,13 +78,13 @@ This will show dialog if necessary.
 This library can be used in two ways:
 1. Library will keep track of app usage and will show dialog when required.
 Show dialog using this statement
-```
+```java
 AppRateDialog.showDialogIfTimeToShowDialog(MainActivity.this);
 ```
 
 2. Always show dialog when called.(Ex. always show dialog when button clicked)
 Show dialog using this statement
-```
+```java
 AppRateDialog.showDialogDefinitely(MainActivity.this);
 ```
 
