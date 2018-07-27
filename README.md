@@ -94,19 +94,23 @@ AppRateDialog.showDialogDefinitely(MainActivity.this);
 ```
 
 ### Methods and Parameters
-Method | Parameter | Use | Type | Default Value
--------|-----------|-----|-----|----
-`setTitle()` | `String title` or `int titleStringId`(Ex. R.string.rate_title) | Specifies Title of Rate dialog | optional(Uses default title if not specified) | 
-`setMessage()` | `String message` or `int messageStringId` | Specifies Message of Rate dialog | optional
-`setRateButtonString()` | `String str` or `int strStringId` | Specifies Rate button(Positive button) string | optional
-`setRemindButtonString()` | `String str` or `int strStringId` | Specifies Remind button(Neutral button) string | optional
-`setNeverButtonString()` | `String str` or `int strStringId` | Specifies Never button(Negative button) string | optional
-`isShowRemindButton()` | `boolean isShow` | Specifies if Remind button should show or not| optional(Default value is `true`)
-`isShowNeverButton()` | `boolean isShow` | Specifies if Never button should show or not| optional(Default value is `true`)
+Method | Use | Type | Default Value
+-------|-----|------|--------------
+`setTitle(String title)` or `setTitle(int titleStringId)` | Specifies Title of Rate dialog | optional | "Rate"
+`setMessage(String message)` or `setMessage(int messageStringId)` | Specifies Message of Rate dialog | optional | "Enjoying? Rate this app. Thanks for your support!"
+`setRateButtonString(String str)` or `setRateButtonString(int strStringId)` | Specifies Rate button(Positive button) string | optional | "Rate"
+`setRemindButtonString(String str)` or `setRemindButtonString(int strStringId)` | Specifies Remind button(Neutral button) string | optional | "No"
+`setNeverButtonString(String str)` or `setNeverButtonString(int strStringId)` | Specifies Never button(Negative button) string | optional | "Not Now!"
+`isShowRemindButton(boolean isShow)`  | Specifies if Remind button should show or not| optional | `true`
+`isShowNeverButton(boolean isShow)`  | Specifies if Never button should show or not| optional | `true`
+`setNoOfUseInterval(int count)`  | Specifies number of app usage interval when dialog should show | optional | `3`
+`setUsageDaysInterval(int interval)` | Specifies number of days interval when dialog should show | optional | `3`
+`isCancellable(boolean isCancellable)` | Specifies is dialog cancellable or not | optional | `false`
+`isDebug(boolean isDebug)` | This method is useful while development. If `isDebug` is `true`, Rate dialog will be shown every time. In production release, it should be false. | optional | `false`
+`setOnRateDialogClosedListener(OnRateDialogClosedListener rateDialogClosedListener)` | Specifies listener which should be called when Rate dialod is closed.(Dialog will be considered closed when Rate, Never or Remind button is pressed or dialog is cancelled) | optional | `null`
+`setOnDialogShouldNotShowListener(OnDialogShouldNotShowListener dialogShouldNotShowListener)` | Specifies listener which should be called when Rate dialod is not shown. (This listener will be called only if Rate dialog is not shown.) | optional | `null`
+`monitor()` | - | Monitors app uasge count | required | -
 
-`setNoOfUseInterval()` | `int count` | Specifies number of app usage interval when dialog should show | optional(Default value is `3`)
-`setUsageDaysInterval()` | `int interval` | Specifies number of days interval when dialog should show | optional(Default value is `3`)
-`isCancellable()` | `boolean isCancellable` | Specifies is dialog cancellable or not | optional(Default value is `false`)
-`isDebug()` | `boolean isDebug` | This method is useful while development. If `isDebug` is `true`, Rate dialog will be shown every time. In production release, it should be false. | optional(Default value is `false`)
+
 
 
